@@ -14,3 +14,13 @@
 (eval-after-load "scss-mode"
   '(progn
      (setq scss-compile-at-save nil)))
+
+(defun my-scss-mode-hook ()
+  "Hooks for Web mode."
+  (setq scss-mode-markup-indent-offset 2))
+
+(add-hook 'scss-mode-hook  'my-scss-mode-hook)
+
+(add-hook 'sass-mode-hook
+	  (lambda () (highlight-indentation-current-column-mode)))
+

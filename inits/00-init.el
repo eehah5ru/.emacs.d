@@ -3,6 +3,7 @@
 
 (defun mac-os-p ()
   (member window-system '(mac ns)))
+
 (defun linuxp ()
   (eq window-system 'x))
 
@@ -67,5 +68,5 @@
 ;; Prevent beeping.
 (setq ring-bell-function 'ignore)
 
-(setq make-backup-files nil)
+(setq make-backup-files t)
 (setq auto-save-default nil)

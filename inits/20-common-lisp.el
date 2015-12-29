@@ -1,16 +1,20 @@
-(cond
- ((file-exists-p (expand-file-name "~/quicklisp/slime-helper.el"))
-  (load (expand-file-name "~/quicklisp/slime-helper.el")))
- ((file-exists-p (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
-  (load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el")))
- (T (require-or-install 'slime)))
+(require-or-install 'slime-company)
 
-(require 'slime-autoloads)
+(cond
+    ((file-exists-p (expand-file-name "~/quicklisp/slime-helper.el"))
+     (load (expand-file-name "~/quicklisp/slime-helper.el")))
+    ((file-exists-p (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
+     (load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el")))
+    (T (require-or-install 'slime)))
+
+(require-or-install 'slime-autoloads)
 
 (setq slime-default-lisp 'sbcl)
 (setq slime-lisp-implementations
       `((sbcl ("ros" "-L" "sbcl" "-Q" "run") :coding-system utf-8-unix)
+  (roswell ("ros" "dynamic-space-size=2000" "-Q" "-l" "~/.sbclrc" "run"))
         (ccl ("ros" "-L" "ccl-bin" "-Q" "run") :coding-system utf-8-unix)))
+
 (add-hook 'slime-mode-hook
           (lambda ()
             (unless (slime-connected-p)
@@ -18,11 +22,13 @@
             (global-set-key (kbd "C-c s") 'slime-selector)
             (define-key slime-scratch-mode-map (kbd "C-n") 'slime-eval-print-last-expression)
             (define-key slime-scratch-mode-map (kbd "C-j") 'next-line)))
+
 (add-hook 'slime-repl-mode-hook
           (lambda ()
             (define-key slime-repl-mode-map (kbd "C-n") 'slime-repl-newline-and-indent)
             (define-key slime-repl-mode-map (kbd "C-j") 'next-line)
             (define-key slime-repl-mode-map (kbd "M-r") 'anything-for-files)))
+
 (setq slime-autodoc-use-multiline-p t)
 
 (setq slime-contribs
@@ -87,3 +93,7 @@
 (set-pretty-patterns
  '((?λ ("\\<lambda\\>" lisp lisp-interaction emacs-lisp scheme))
    (?λ ("\\<function\\>" js2))))
+
+
+(require-or-install 'slime)
+(slime-setup '(slime-fancy slime-tramp slime-asdf slime-company))

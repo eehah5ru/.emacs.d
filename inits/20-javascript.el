@@ -8,6 +8,9 @@
      (setq js2-basic-offset 2
            js2-mirror-mode nil)))
 
-(unless (package-installed-p 'coffee-mode)
-  (package-install 'coffee-mode))
-(autoload 'coffee-mode "coffee-mode" nil t)
+(require-or-install 'js-doc)
+
+(add-hook 'js2-mode-hook
+          (lambda ()
+              (define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
+              (define-key js2-mode-map "@" 'js-doc-insert-tag)))

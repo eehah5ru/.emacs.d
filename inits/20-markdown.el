@@ -1,5 +1,8 @@
-(unless (package-installed-p 'markdown-mode)
-  (package-install 'markdown-mode))
+(require-or-install 'markdown-mode)
+(require-or-install 'markdown-toc)
+
+;; (unless (package-installed-p 'markdown-mode)
+;;   (package-install 'markdown-mode))
 
 (autoload 'markdown-mode "markdown-mode" nil t)
 (eval-after-load "markdown-mode"
