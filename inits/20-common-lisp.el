@@ -1,5 +1,3 @@
-(require-or-install 'slime-company)
-
 (cond
     ((file-exists-p (expand-file-name "~/quicklisp/slime-helper.el"))
      (load (expand-file-name "~/quicklisp/slime-helper.el")))
@@ -9,6 +7,7 @@
 
 (require-or-install 'slime-autoloads)
 
+(require-or-install 'slime-company)
 (setq slime-default-lisp 'sbcl)
 (setq slime-lisp-implementations
       `((sbcl ("ros" "-L" "sbcl" "-Q" "run") :coding-system utf-8-unix)
@@ -32,13 +31,13 @@
 (setq slime-autodoc-use-multiline-p t)
 
 (setq slime-contribs
-      '(slime-fancy slime-banner slime-indentation))
+      '(slime-fancy slime-banner slime-indentation slime-tramp slime-asdf slime-company))
 (slime-setup slime-contribs)
 
-(add-hook 'slime-repl-mode-hook
-          (lambda ()
-            (el-get 'sync 'slime-repl-ansi-color)
-            (slime-setup '(slime-repl-ansi-color))))
+;; (add-hook 'slime-repl-mode-hook
+;;           (lambda ()
+;;             (el-get 'sync 'slime-repl-ansi-color)
+;;             (slime-setup '(slime-repl-ansi-color))))
 
 (require-or-install 'ac-slime)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
@@ -95,5 +94,5 @@
    (?λ ("\\<function\\>" js2))))
 
 
-(require-or-install 'slime)
+;; (require-or-install 'slime)
 (slime-setup '(slime-fancy slime-tramp slime-asdf slime-company))
