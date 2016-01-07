@@ -1,7 +1,9 @@
-(unless (package-installed-p 'js2-mode)
-  (package-install 'js2-mode))
+(require-or-install 'js2-mode)
 
-(autoload 'js2-mode "js2" nil t)
+;; (unless (package-installed-p 'js2-mode)
+;;   (package-install 'js2-mode))
+
+;; (autoload 'js2-mode "js2" nil t)
 
 (eval-after-load "js2-mode"
   '(progn
