@@ -1,3 +1,6 @@
+(require-or-install 'haskell-mode)
+(require-or-install 'ghc)
+(require-or-install 'shm)
 ;;
 ;;
 ;; haskell stuff
@@ -28,23 +31,23 @@
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
 
-(require 'shm)			       
+(require 'shm)
 ;; (structured-haskell-mode)
 
 ;;
 ;; haskell mode hook
 ;;
 (add-hook 'haskell-mode-hook (lambda ()
-			       (ghc-init)
-			       ;; (turn-on-haskell-doc-mode)
-			       ;; (interactive-haskell-mode)
-			       ;; (ghc-abbrev-init)
-			       ;; (ghc-type-init)
-			       ;; (unless my-ghc-initialized
-			       ;; 	 (ghc-comp-init)
-			       ;; 	 (setq my-ghc-initialized t))			    
-			       ;; (ghc-import-module)
-			       ))
+             (ghc-init)
+             ;; (turn-on-haskell-doc-mode)
+             ;; (interactive-haskell-mode)
+             ;; (ghc-abbrev-init)
+             ;; (ghc-type-init)
+             ;; (unless my-ghc-initialized
+             ;;    (ghc-comp-init)
+             ;;    (setq my-ghc-initialized t))
+             ;; (ghc-import-module)
+             ))
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
@@ -83,11 +86,11 @@
 
 
 (eval-after-load 'haskell-mode '(progn
-				  (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-				  (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-				  (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
-				  (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
-				  (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
-				  (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
-				  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
-				  (define-key haskell-mode-map (kbd "C-c C-c") 'comment-region)))
+          (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+          (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+          (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
+          (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
+          (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
+          (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
+          (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+          (define-key haskell-mode-map (kbd "C-c C-c") 'comment-region)))
