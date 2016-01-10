@@ -8,7 +8,7 @@
 
 
 (custom-set-variables '(coffee-tab-width 2)
-		      '(flycheck-coffeelintrc "~/.emacs.d/coffeelint.json"))
+          '(flycheck-coffeelintrc "~/.emacs.d/coffeelint.json"))
 
 
 (require-or-install 'flymake-coffee)
@@ -29,5 +29,6 @@ For details, see `comment-dwim'."
     (whitespace-mode)
     (define-key coffee-mode-map (kbd "C-j") 'coffee-newline-and-indent)
     (define-key coffee-mode-map (kbd "C-M-;") 'coffee-comment-dwim-3)
-    (load "coffee-doc.el")
-    (require 'coffee-doc)))
+    ;; (load "coffee-doc.el")
+    ;; (require 'coffee-doc)
+    ))
