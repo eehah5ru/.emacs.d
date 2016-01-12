@@ -3,6 +3,8 @@
 (require-or-install 'helm-config)
 (require-or-install 'helm-projectile)
 (require-or-install 'ac-helm)
+(require-or-install 'helm-descbinds)
+
 
 ;; HELM plugin
 (setq helm-ff-transformer-show-only-basename nil
