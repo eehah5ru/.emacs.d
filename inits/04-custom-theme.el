@@ -5,7 +5,7 @@
 ;; colour theme
 ;;
 ;;
-;; (require-or-install 'color-theme-solarized)
+(require-or-install 'color-theme-solarized)
 
 (load-theme 'solarized t)
 
