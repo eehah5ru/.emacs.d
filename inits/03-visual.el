@@ -87,8 +87,9 @@
 ;; (require-or-install 'cua)
 (cua-mode 1)
 
+;; (Global-Unset-Key (Kbd "C-c <timeout>"))
 
-;; (defface hlline-face
+;; (Defface hlline-face
 ;;   '((((class color)
 ;;       (background dark))
 ;;      (:background "dark slate gray"))
