@@ -1,6 +1,7 @@
 (require-or-install 'haskell-mode)
 (require-or-install 'ghc)
 (require-or-install 'shm)
+(require-or-install 'hindent)
 (require-or-install 'company-ghc)
 (require-or-install 'company-ghci)
 ;;
