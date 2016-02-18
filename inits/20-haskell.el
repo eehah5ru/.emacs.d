@@ -29,6 +29,10 @@
 
 (setq ghc-interactive-command "ghc-modi")
 
+(setq hindent-style "chris-done")
+;; (setq hindent-style "gibiansky")
+;; (setq hindent-style "johan-tibell")
+
 (load "haskell-mode-autoloads.el")
 
 (autoload 'ghc-init "ghc" nil t)
@@ -96,4 +100,7 @@
           (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
           (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
           (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
-          (define-key haskell-mode-map (kbd "C-c C-c") 'comment-region)))
+          (define-key haskell-mode-map (kbd "C-c C-c") 'comment-region)
+          ;; (define-key haskell-mode-map [remap shm/splice] 'helm-swoop)
+          (define-key haskell-mode-map (kbd "M-s") nil) ; disable shm/splice
+          (define-key haskell-mode-map (kbd "M-s o") 'helm-swoop)))
