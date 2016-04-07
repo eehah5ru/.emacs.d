@@ -30,6 +30,7 @@ For details, see `comment-dwim'."
     (define-key coffee-mode-map (kbd "C-j") 'coffee-newline-and-indent)
     (define-key coffee-mode-map (kbd "C-M-;") 'coffee-comment-dwim-3)
     (define-key coffee-mode-map (kbd "<C-tab>") 'coffee-indent-shift-right)
+    (highlight-indentation-current-column-mode)
     ;; (load "coffee-doc.el")
     ;; (require 'coffee-doc)
     ))
