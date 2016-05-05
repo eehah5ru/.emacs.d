@@ -1,1 +1,17 @@
+(require-or-install 'flycheck)
+(require-or-install 'flycheck-elm)
+(require-or-install 'company)
 (require-or-install 'elm-mode)
+;; (require-or-install 'elm-oracle)
+
+(with-eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
+
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-elm))
+
+(add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+
+;; (add-hook 'elm-mode-hook
+;;           (lambda ()
+;;             (setq company-backends '(company-elm))))
