@@ -9,7 +9,7 @@
 ;; haskell stuff
 ;;
 ;;
-(let ((my-cabal-path (expand-file-name "~/Library/Haskell/bin")))
+(let ((my-cabal-path (expand-file-name "~/.local/bin")))
   (setenv "PATH" (concat my-cabal-path ":" (getenv "PATH")))
   (add-to-list 'exec-path my-cabal-path))
 (custom-set-variables '(haskell-tags-on-save t))
