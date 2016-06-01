@@ -1,4 +1,11 @@
 (when (mac-os-p)
+  ;; (require-or-install 'redo)
+  ;; (require-or-install 'mac-key-mode)
+  ;; (mac-key-mode 1)
+  (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'super)
+
+  (set-keyboard-coding-system nil)
   ;; (setq ns-command-modifier 'meta)
   ;; (setq ns-alternate-modifier 'super)
   (setq mac-pass-command-to-system nil))
