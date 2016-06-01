@@ -7,8 +7,9 @@
            (lambda () (highlight-indentation-current-column-mode)))
 
 
-(custom-set-variables '(coffee-tab-width 2)
-          '(flycheck-coffeelintrc "~/.emacs.d/coffeelint.json"))
+(custom-set-variables
+ '(coffee-tab-width 2)
+ '(flycheck-coffeelintrc "~/.emacs.d/coffeelint.json"))
 
 
 (require-or-install 'flymake-coffee)
