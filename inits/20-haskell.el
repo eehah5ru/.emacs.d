@@ -4,14 +4,19 @@
 (require-or-install 'hindent)
 (require-or-install 'company-ghc)
 (require-or-install 'company-ghci)
+
 ;;
 ;;
 ;; haskell stuff
 ;;
 ;;
-(let ((my-cabal-path (expand-file-name "~/.local/bin")))
-  (setenv "PATH" (concat my-cabal-path ":" (getenv "PATH")))
-  (add-to-list 'exec-path my-cabal-path))
+
+(let ((my-cabal-path (list (expand-file-name "~/.local/bin") (expand-file-name "/usr/local/bin"))))
+  (setenv "PATH" (concat (mapconcat 'identity my-cabal-path ":")
+                         ":"
+                         (getenv "PATH")))
+  (mapcar (lambda (x) (add-to-list 'exec-path x)) my-cabal-path))
+
 (custom-set-variables '(haskell-tags-on-save t))
 
 ;;(setq tags-table-list
