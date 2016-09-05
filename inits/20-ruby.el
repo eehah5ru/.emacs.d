@@ -1,10 +1,10 @@
 (require-or-install 'robe)
-(require-or-install 'ruby-electric)
+;; (require-or-install 'ruby-electric)
 (require-or-install 'company-robe)
-(require-or-install 'ruby-additional)
-(require-or-install 'ruby-tools)
-(require-or-install 'yard-mode)
-(require-or-install 'enh-ruby-mode)
+;; (require-or-install 'ruby-additional)
+;; (require-or-install 'ruby-tools)
+;; (require-or-install 'yard-mode)
+;; (require-or-install 'enh-ruby-mode)
 ;;
 ;;
 ;; ruby and rails modes
@@ -29,7 +29,8 @@
 ;; - C-M-i to complete the symbol at point
 
 (add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'ruby-mode-hook 'ruby-electric-mode)
+;;; FIXME: temporary disabled
+;; (add-hook 'ruby-mode-hook 'ruby-electric-mode)
 
 (eval-after-load 'company
   '(push 'company-robe company-backends))
@@ -60,7 +61,9 @@
 
 ;; Support for YARD
 
-(add-hook 'ruby-mode-hook 'yard-mode)
+;;; FIXME: temporary disabled
+;; (add-hook 'ruby-mode-hook 'yard-mode)
+
 ;; Support for running rspec tests
 ;; (require 'rspec-mode)
 
@@ -68,10 +71,18 @@
 (add-hook 'ruby-mode-hook
     (lambda () (highlight-indentation-current-column-mode)))
 
-(add-hook 'ruby-mode-hook '(lambda ()
-                               ;; make ruby-electric play nice with autopair
-                               (substitute-key-definition 'ruby-electric-curlies nil ruby-mode-map)
-                               (substitute-key-definition 'ruby-electric-matching-char nil ruby-mode-map)
-                               (substitute-key-definition 'ruby-electric-close-matching-char nil ruby-mode-map)))
+;;;
+;;; disable advanced paren-mode
+;;;
+;; (add-hook 'ruby-mode-hook
+;;           #'endless/locally-keep-only-basic-paren)
+
+
+;; (add-hook 'ruby-mode-hook '(lambda ()
+;;                                ;; make ruby-electric play nice with autopair
+;;                                (substitute-key-definition 'ruby-electric-curlies nil ruby-mode-map)
+;;                                (substitute-key-definition 'ruby-electric-matching-char nil ruby-mode-map)
+;;                                (substitute-key-definition 'ruby-electric-close-matching-char nil ruby-mode-map)))
+
 
 (setq ruby-deep-indent-paren nil)
