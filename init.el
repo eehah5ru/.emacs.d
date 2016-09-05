@@ -52,3 +52,27 @@
       (expand-file-name "el-get/user/init-files" *emacs-config-directory*))
 
 (el-get 'sync)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '(company-ghc-show-info t)
+ '(flycheck-coffeelintrc "~/.emacs.d/coffeelint.json")
+ '(haskell-interactive-mode-hide-multi-line-errors nil)
+ '(haskell-interactive-popup-errors nil)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-type (quote cabal-repl))
+ '(haskell-tags-on-save t)
+ '(package-selected-packages
+   (quote
+    (clojure-mode-extra-font-locking ac-cider clojure-mode cider helm-cider helm-cider-history helm helm-ag helm-company helm-ghc yard-mode yaml-mode web-mode smartparens slime-company slim-mode shm scss-mode scheme-complete sass-mode ruby-tools ruby-electric ruby-additional robe recentf-ext racket-mode popwin paredit org-bullets markdown-toc magit-annex js2-mode js-doc jade-mode init-loader hindent highlight-indentation helm-swoop helm-projectile helm-descbinds gist geiser flymake-coffee flycheck-elm evil enh-ruby-mode elm-mode direx csv-mode company-ghci company-ghc color-theme-solarized coffee-mode autopair auto-save-buffers-enhanced anzu ac-slime ac-helm))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
