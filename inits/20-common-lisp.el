@@ -1,8 +1,11 @@
 (cond
+    ((file-exists-p (expand-file-name "~/.roswell/lisp/quicklisp/slime-helper.el"))
+      (load (expand-file-name "~/.roswell/lisp/quicklisp/slime-helper.el")))
+ ;; ((file-exists-p (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
+    ;;  (load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el")))
     ((file-exists-p (expand-file-name "~/quicklisp/slime-helper.el"))
      (load (expand-file-name "~/quicklisp/slime-helper.el")))
-    ((file-exists-p (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
-     (load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el")))
+
     (T (require-or-install 'slime)))
 
 (require-or-install 'slime-autoloads)
@@ -10,8 +13,8 @@
 (require-or-install 'slime-company)
 (setq slime-default-lisp 'sbcl)
 (setq slime-lisp-implementations
-      `((sbcl ("ros" "-L" "sbcl" "-Q" "run") :coding-system utf-8-unix)
-  (roswell ("ros" "dynamic-space-size=2000" "-Q" "-l" "~/.sbclrc" "run"))
+      `((sbcl ("ros" "-L" "sbcl-bin" "-Q" "run") :coding-system utf-8-unix)
+        (roswell ("ros" "dynamic-space-size=2000" "-Q" "-l" "~/.sbclrc" "run"))
         (ccl ("ros" "-L" "ccl-bin" "-Q" "run") :coding-system utf-8-unix)))
 
 (add-hook 'slime-mode-hook
