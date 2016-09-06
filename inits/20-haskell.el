@@ -11,7 +11,9 @@
 ;;
 ;;
 
-(let ((my-cabal-path (list (expand-file-name "~/.local/bin") (expand-file-name "/usr/local/bin"))))
+(let ((my-cabal-path (list
+                      (expand-file-name "~/.local/bin")
+                      (expand-file-name "/usr/local/bin"))))
   (setenv "PATH" (concat (mapconcat 'identity my-cabal-path ":")
                          ":"
                          (getenv "PATH")))
@@ -81,20 +83,14 @@
  '(haskell-process-suggest-remove-import-lines t)
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
- '(haskell-process-type 'cabal-repl))
+ '(company-ghc-show-info t)
+ '(haskell-process-type 'stack-ghci)
+ '(haskell-interactive-mode-hide-multi-line-errors nil)
+ '(haskell-interactive-popup-errors nil))
 
 
 (add-to-list 'company-backends 'company-ghc)
 ;; (add-to-list 'company-backends 'slime-company)
-(custom-set-variables '(company-ghc-show-info t))
-
-(custom-set-variables
- '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-log t)
- '(haskell-interactive-mode-hide-multi-line-errors nil)
- '(haskell-process-type (quote cabal-repl))
- '(haskell-interactive-popup-errors nil))
 
 
 (eval-after-load 'haskell-mode '(progn
