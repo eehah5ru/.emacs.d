@@ -78,7 +78,7 @@
 
 ;; Easy transition between buffers: M-arrow-keys
 (if (equal nil (equal major-mode 'org-mode))
-    (windmove-default-keybindings 'meta))
+    (windmove-default-keybindings 'super))
 
 
 ;;

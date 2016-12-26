@@ -2,6 +2,7 @@
                             (lisp-mode . "\\.\\(cl\\|lisp\\)$")
                             (scheme-mode . "\\.scm$")
                             (clojure-mode . "\\.clj$")
+                            (clojurescript-mode . "\\.cljs$")
                             (perl-model . "\\.\\(pl\\|t\\|psgi\\)$")
                             (go-mode . "\\.go$")
                             (yaml-mode . "\\.ya?ml$")
