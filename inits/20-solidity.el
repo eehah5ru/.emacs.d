@@ -23,5 +23,7 @@
 ;;; hooks
 ;;;
 (add-hook 'solidity-mode-hook
-          (lambda () (setq comment-start "//"
-                      comment-end   "")))
+          (lambda ()
+            (setq comment-start "//"
+                  comment-end   "")
+            (flycheck-mode)))
