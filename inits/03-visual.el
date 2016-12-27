@@ -72,13 +72,17 @@
 (setq x-select-enable-clipboard t)
 
 
-;; Highlight search resaults
+;; Highlight search results
 (setq search-highlight        t)
 (setq query-replace-highlight t)
 
 ;; Easy transition between buffers: M-arrow-keys
 (if (equal nil (equal major-mode 'org-mode))
     (windmove-default-keybindings 'super))
+
+;;; highlight current line
+(global-hl-line-mode)
+
 
 
 ;;
@@ -100,7 +104,6 @@
 ;;      ()))
 ;;   nil :group 'font-lock-highlighting-faces)
 ;; (setq hl-line-face 'hlline-face)
-;; (global-hl-line-mode)
 
 ;; (loop for mode in '(undo-tree-mode auto-complete-mode whitespace-mode)
 ;;       do (assq-delete-all mode minor-mode-alist))
