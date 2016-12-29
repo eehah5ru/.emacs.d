@@ -8,7 +8,7 @@
 
 (defvar autopair-modes '(r-mode js-mode c++-mode arduino-mode))
 
-(defvar not-autopair-modes '(ruby-mode enh-ruby-mode structured-haskell-mode haskell-mode))
+(defvar not-autopair-modes '(ruby-mode enh-ruby-mode structured-haskell-mode haskell-mode clojure-mode clojurescript-mode))
 
 (defun turn-on-autopair-mode () (autopair-mode 1))
 
