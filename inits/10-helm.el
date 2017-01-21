@@ -4,6 +4,7 @@
 (require-or-install 'helm-projectile)
 (require-or-install 'ac-helm)
 (require-or-install 'helm-descbinds)
+(require-or-install 'helm-ag)
 
 
 ;; HELM plugin
@@ -38,8 +39,17 @@
 (global-set-key (kbd "C-x C-r") #'helm-recentf)
 (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
 (global-set-key (kbd "M-y")     #'helm-show-kill-ring)
-(global-set-key (kbd "M-s o")   #'helm-swoop)
-(global-set-key (kbd "M-s /")   #'helm-multi-swoop)
+;;;
+;;; swoop keys
+;;;
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+(define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+
+;; (global-set-key (kbd "M-s o")   #'helm-swoop)
+;; (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
 (global-set-key (kbd "C-x c!")   #'helm-calcul-expression)
 (global-set-key (kbd "C-x c:")   #'helm-eval-expression-with-eldoc)
 (define-key helm-map (kbd "M-o") #'helm-previous-source)
@@ -56,4 +66,28 @@
 ;;     (interactive)
 ;;     (helm-ag (projectile-project-root)))
 
+
+;;;
+;;;
+;;; SWOOP config
+;;;
+;;;
+;; Save buffer when helm-multi-swoop-edit complete
+(setq helm-multi-swoop-edit-save t)
+
+;; If this value is t, split window inside the current window
+(setq helm-swoop-split-with-multiple-windows nil)
+
+;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+(setq helm-swoop-split-direction 'split-window-vertically)
+
+;; If nil, you can slightly boost invoke speed in exchange for text color
+(setq helm-swoop-speed-or-color nil)
+
+;; ;; Go to the opposite side of line from the end or beginning of line
+(setq helm-swoop-move-to-line-cycle t)
+
+;; Optional face for line numbers
+;; Face name is `helm-swoop-line-number-face`
+(setq helm-swoop-use-line-number-face t)
 (helm-mode 1)

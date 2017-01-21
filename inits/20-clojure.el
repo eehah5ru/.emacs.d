@@ -4,6 +4,13 @@
 (require-or-install 'ac-cider)
 (require-or-install 'clojure-mode-extra-font-locking)
 
+;;;
+;;; remap helm swoop keys
+;;;
+(defun remap-helm-swoop-keys ()
+  )
+
+
 ;; Enable paredit for Clojure
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
 
