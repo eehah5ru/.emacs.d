@@ -4,6 +4,12 @@
 (require-or-install 'helm-projectile)
 (require-or-install 'ac-helm)
 (require-or-install 'helm-descbinds)
+
+;;;
+;;; helm ag
+;;;
+(custom-set-variables
+ '(helm-follow-mode-persistent t))
 (require-or-install 'helm-ag)
 
 
