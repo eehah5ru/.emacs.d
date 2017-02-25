@@ -3,6 +3,7 @@
 (require-or-install 'helm-cider)
 (require-or-install 'ac-cider)
 (require-or-install 'clojure-mode-extra-font-locking)
+(require-or-install 'helm-clojuredocs)
 
 ;;;
 ;;; remap helm swoop keys
