@@ -1,4 +1,6 @@
 (require-or-install 'haskell-mode)
+(package-install 'intero)
+
 (require-or-install 'ghc)
 (require-or-install 'shm)
 (require-or-install 'hindent)
@@ -21,6 +23,11 @@
 
 (custom-set-variables '(haskell-tags-on-save t))
 
+;;;
+;;; enable itero mode
+;;;
+;; (add-hook 'haskell-mode-hook 'intero-mode)
+
 ;;(setq tags-table-list
 ;;      '("~/emacs"))
 
@@ -42,8 +49,8 @@
 
 (load "haskell-mode-autoloads.el")
 
-(autoload 'ghc-init "ghc" nil t)
-(autoload 'ghc-debug "ghc" nil t)
+;; (autoload 'ghc-init "ghc" nil t)
+;; (autoload 'ghc-debug "ghc" nil t)
 
 (require 'shm)
 ;; (structured-haskell-mode)
@@ -51,17 +58,19 @@
 ;;
 ;; haskell mode hook
 ;;
-(add-hook 'haskell-mode-hook (lambda ()
-             (ghc-init)
-             ;; (turn-on-haskell-doc-mode)
-             ;; (interactive-haskell-mode)
-             ;; (ghc-abbrev-init)
-             ;; (ghc-type-init)
-             ;; (unless my-ghc-initialized
-             ;;    (ghc-comp-init)
-             ;;    (setq my-ghc-initialized t))
-             ;; (ghc-import-module)
-             ))
+(add-hook 'haskell-mode-hook
+          (lambda ()
+            (hl-line-unhighlight-now)
+            ;; (ghc-init)
+            ;; (turn-on-haskell-doc-mode)
+            ;; (interactive-haskell-mode)
+            ;; (ghc-abbrev-init)
+            ;; (ghc-type-init)
+            ;; (unless my-ghc-initialized
+            ;;    (ghc-comp-init)
+            ;;    (setq my-ghc-initialized t))
+            ;; (ghc-import-module)
+            ))
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
