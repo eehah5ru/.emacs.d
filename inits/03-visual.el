@@ -1,6 +1,7 @@
 (show-paren-mode t)
 
 (require-or-install 'whitespace)
+(require-or-install (intern "hl-line+"))
 (set-face-foreground 'whitespace-space "DarkGoldenrod1")
 (set-face-background 'whitespace-space nil)
 (set-face-bold-p 'whitespace-space t)
