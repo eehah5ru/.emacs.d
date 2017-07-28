@@ -69,7 +69,9 @@
 
 
 (add-hook 'ruby-mode-hook
-    (lambda () (highlight-indentation-current-column-mode)))
+          (lambda ()
+            (highlight-indentation-current-column-mode)
+            (smartparens-mode)))
 
 ;;;
 ;;; disable advanced paren-mode
