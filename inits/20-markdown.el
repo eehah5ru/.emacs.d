@@ -1,6 +1,7 @@
 (require-or-install 'markdown-mode)
+(require-or-install 'markdown-mode+)
 (require-or-install 'markdown-toc)
-
+(require-or-install 'markdown-preview-mode)
 ;; (unless (package-installed-p 'markdown-mode)
 ;;   (package-install 'markdown-mode))
 
