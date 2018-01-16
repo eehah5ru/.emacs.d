@@ -6,6 +6,13 @@
 ;;   (package-install 'markdown-mode))
 
 (autoload 'markdown-mode "markdown-mode" nil t)
+
+;;;
+;;; disable whitespace cleaning
+;;;
+(eval-after-load 'whitespace-cleanup-mode
+            (push 'markdown-mode whitespace-cleanup-mode-ignore-modes))
+
 (eval-after-load "markdown-mode"
   '(progn
      (define-key markdown-mode-map (kbd "C-=") 'markdown-cycle)
