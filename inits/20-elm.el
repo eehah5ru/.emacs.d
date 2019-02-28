@@ -10,7 +10,10 @@
 (with-eval-after-load 'company
   (add-to-list 'company-backends 'company-elm))
 
-(add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+(add-hook 'elm-mode-hook
+          (lambda ()
+            (nvm-use-for-buffer)
+            (elm-oracle-setup-completion)))
 
 ;; (add-hook 'elm-mode-hook
 ;;           (lambda ()
