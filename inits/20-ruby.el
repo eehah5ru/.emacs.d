@@ -4,7 +4,7 @@
 ;; (require-or-install 'ruby-additional)
 ;; (require-or-install 'ruby-tools)
 ;; (require-or-install 'yard-mode)
-;; (require-or-install 'enh-ruby-mode)
+(require-or-install 'enh-ruby-mode)
 ;;
 ;;
 ;; ruby and rails modes
@@ -46,9 +46,9 @@
 ;;
 ;; (add-hook 'ruby-mode-hook 'ruby-electric-mode)
 
-;; (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
-;; (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-;; (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
+(autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 
 ;; Functions to help with refactoring
 ;; (require 'ruby-refactor)
