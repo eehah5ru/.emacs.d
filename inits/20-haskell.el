@@ -30,7 +30,19 @@
 
 ;;;
 ;;;
-;;; functions
+;;; SASS library
+;;;
+;;;
+(setenv "LD_LIBRARY_PATH"
+  (concat
+   "/usr/local/Cellar/libsass/3.5.5/lib/" ";"
+   (getenv "LD_LIBRARY_PATH")
+  )
+)
+
+;;;
+;;;
+;;; functionsb
 ;;;
 ;;;
 (defun haskell-move-right ()
