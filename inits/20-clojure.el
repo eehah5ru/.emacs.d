@@ -4,7 +4,7 @@
 (require-or-install 'ac-cider)
 (require-or-install 'clojure-mode-extra-font-locking)
 (require-or-install 'helm-clojuredocs)
-
+(require-or-install 'nvm)
 ;;;
 ;;; remap helm swoop keys
 ;;;
