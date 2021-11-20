@@ -1,7 +1,13 @@
 (show-paren-mode t)
 
-(require-or-install 'whitespace)
-(require-or-install (intern "hl-line+"))
+(use-package whitespace
+             :ensure t)
+
+;(use-package (intern "hl-line+")
+;             :ensure t)
+
+;(require-or-install 'whitespace)
+;(require-or-install (intern "hl-line+"))
 (set-face-foreground 'whitespace-space "DarkGoldenrod1")
 (set-face-background 'whitespace-space nil)
 (set-face-bold-p 'whitespace-space t)
@@ -40,6 +46,9 @@
 ;;
 ;;
 ;; Linum plugin
+(use-package linum
+             :ensure t)
+
 (require-or-install 'linum) ;; вызвать Linum
 (line-number-mode   t) ;; показать номер строки в mode-line
 (global-linum-mode  t) ;; показывать номера строк во всех буферах

@@ -1,17 +1,40 @@
-(require-or-install 'helm)
-(require-or-install 'helm-swoop)
-(require-or-install 'helm-config)
-(require-or-install 'helm-projectile)
-(require-or-install 'helm-ls-git)
-(require-or-install 'ac-helm)
-(require-or-install 'helm-descbinds)
+(use-package helm
+             :ensure t)
+
+(use-package helm-swoop
+             :ensure t)
+
+;(use-package helm-config
+;             :ensure t)
+
+(use-package helm-projectile
+             :ensure t)
+
+(use-package helm-ls-git
+             :ensure t)
+
+(use-package ac-helm
+             :ensure t)
+
+(use-package helm-descbinds
+             :ensure t)
+
+(use-package helm-ag
+             :ensure t)
+;(require-or-install 'helm)
+;(require-or-install 'helm-swoop)
+;(require-or-install 'helm-config)
+;(require-or-install 'helm-projectile)
+;(require-or-install 'helm-ls-git)
+;(require-or-install 'ac-helm)
+;(require-or-install 'helm-descbinds)
 
 ;;;
 ;;; helm ag
 ;;;
 (custom-set-variables
  '(helm-follow-mode-persistent t))
-(require-or-install 'helm-ag)
+;(require-or-install 'helm-ag)
 
 
 ;; HELM plugin

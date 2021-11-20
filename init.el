@@ -12,11 +12,14 @@
   ;; backport fix for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/") t)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (package-initialize)
 
@@ -95,12 +98,14 @@
 
 
 (custom-set-variables
- ;; custom-set-variables was added sdfby Custom.
+ ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
  '(company-ghc-show-info t)
+ '(custom-safe-themes
+   '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" "3b8284e207ff93dfc5e5ada8b7b00a3305351a3fb222782d8033a400a48eca48" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" "57a29645c35ae5ce1660d5987d3da5869b048477a7801ce7ab57bfb25ce12d3e" "4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" "f5b6be56c9de9fd8bdd42e0c05fecb002dedb8f48a5f00e769370e4517dde0e8" default))
  '(dash-at-point-legacy-mode t)
  '(flycheck-coffeelintrc "~/.emacs.d/coffeelint.json")
  '(haskell-interactive-mode-eval-pretty nil)

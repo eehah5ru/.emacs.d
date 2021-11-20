@@ -1,10 +1,31 @@
-(require-or-install 'clojure-mode)
-(require-or-install 'cider)
-(require-or-install 'helm-cider)
-(require-or-install 'ac-cider)
-(require-or-install 'clojure-mode-extra-font-locking)
-(require-or-install 'helm-clojuredocs)
-(require-or-install 'nvm)
+(use-package clojure-mode
+             :ensure t)
+
+(use-package cider
+             :ensure t)
+
+(use-package helm-cider
+             :ensure t)
+
+(use-package ac-cider
+             :ensure t)
+
+(use-package clojure-mode-extra-font-locking
+             :ensure t)
+
+(use-package helm-clojuredocs
+             :ensure t)
+
+(use-package nvm
+             :ensure t)
+
+;(require-or-install 'clojure-mode)
+;(require-or-install 'cider)
+;(require-or-install 'helm-cider)
+;(require-or-install 'ac-cider)
+;(require-or-install 'clojure-mode-extra-font-locking)
+;(require-or-install 'helm-clojuredocs)
+;(require-or-install 'nvm)
 ;;;
 ;;; remap helm swoop keys
 ;;;

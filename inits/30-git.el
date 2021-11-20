@@ -28,6 +28,12 @@
 ;; (el-get 'sync 'git-status)
 ;; (require 'git-status)
 
-(require-or-install 'magit)
-(require-or-install 'magit-annex)
+(use-package magit
+             :ensure t)
+
+(use-package magit-annex
+             :ensure t)
+
+;(require-or-install 'magit)
+;(require-or-install 'magit-annex)
 ;; (add-hook 'magit-mode-hook 'magit-filenotify-mode)

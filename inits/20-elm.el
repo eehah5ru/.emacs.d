@@ -1,7 +1,19 @@
-(require-or-install 'flycheck)
-(require-or-install 'flycheck-elm)
-(require-or-install 'company)
-(require-or-install 'elm-mode)
+(use-package flycheck
+             :ensure t)
+
+(use-pcakage flycheck-elm
+             :ensure t)
+
+(use-package company
+             :ensure t)
+
+(use-package elm-mode
+             :ensure t)
+
+;(require-or-install 'flycheck)
+;(require-or-install 'flycheck-elm)
+;(require-or-install 'company)
+;(require-or-install 'elm-mode)
 ;; (require-or-install 'elm-oracle)
 
 (with-eval-after-load 'flycheck

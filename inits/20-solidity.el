@@ -15,8 +15,14 @@
 ;;;
 ;;; require necessary plugins
 ;;;
-(require-or-install 'solidity-mode)
-(require-or-install 'flymake-solidity)
+(use-package solidity-mode
+             :ensure t)
+
+(use-package flymake-solidity
+             :ensure t)
+
+;(require-or-install 'solidity-mode)
+;(require-or-install 'flymake-solidity)
 
 
 ;;;

@@ -1,4 +1,6 @@
-(loop for (mode . ext) in '((emacs-lisp-mode . "\\.el$")
+(use-package cl-lib)
+
+(cl-loop for (mode . ext) in '((emacs-lisp-mode . "\\.el$")
                             (lisp-mode . "\\.\\(cl\\|lisp\\)$")
                             (scheme-mode . "\\.scm$")
                             (clojure-mode . "\\.clj$")

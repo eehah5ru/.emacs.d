@@ -1,7 +1,19 @@
-(require-or-install 'racket-mode)
-(require-or-install 'geiser)
-(require-or-install 'scheme-complete)
-(require-or-install 'dash-at-point)
+(use-package racket-mode
+             :ensure t)
+
+(use-package geiser
+            :ensure t)
+
+(use-package scheme-complete
+             :ensure t)
+
+(use-package dash-at-point
+             :ensure t)
+
+;(require-or-install 'racket-mode)
+;(require-or-install 'geiser)
+;(require-or-install 'scheme-complete)
+;(require-or-install 'dash-at-point)
 
 
 ;;;

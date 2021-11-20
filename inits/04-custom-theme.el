@@ -3,10 +3,13 @@
 ;; colour theme
 ;;
 ;;
-(require-or-install 'color-theme)
-(require-or-install 'color-theme-solarized)
+;;require-or-install 'color-theme)
+;(require-or-install 'solarized-theme)
 
-(load-theme 'solarized t)
+(use-package zenburn-theme
+  :ensure t)
+
+(load-theme 'zenburn t)
 
 
 ;; (unless window-system

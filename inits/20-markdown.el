@@ -1,7 +1,19 @@
-(require-or-install 'markdown-mode)
-(require-or-install 'markdown-mode+)
-(require-or-install 'markdown-toc)
-(require-or-install 'markdown-preview-mode)
+(use-package markdown-mode
+             :ensure t)
+
+;(use-package markdown-mode+
+;             :ensure t)
+
+(use-package markdown-toc
+             :ensure t)
+
+(use-package markdown-preview-mode
+             :ensure t)
+
+;(require-or-install 'markdown-mode)
+;(require-or-install 'markdown-mode+)
+;(require-or-install 'markdown-toc)
+;(require-or-install 'markdown-preview-mode)
 ;; (unless (package-installed-p 'markdown-mode)
 ;;   (package-install 'markdown-mode))
 

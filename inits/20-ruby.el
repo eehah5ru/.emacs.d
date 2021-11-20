@@ -1,11 +1,23 @@
-(require-or-install 'robe)
+(use-package robe
+             :ensure t)
+
+;(use-package company-robe
+;             :ensure t)
+
+(use-package enh-ruby-mode
+             :ensure t)
+
+(use-package smartparens
+             :ensure t)
+
+;(require-or-install 'robe)
 ;; (require-or-install 'ruby-electric)
-(require-or-install 'company-robe)
+;(require-or-install 'company-robe)
 ;; (require-or-install 'ruby-additional)
 ;; (require-or-install 'ruby-tools)
 ;; (require-or-install 'yard-mode)
-(require-or-install 'enh-ruby-mode)
-(require-or-install 'smartparens)
+;(require-or-install 'enh-ruby-mode)
+;(require-or-install 'smartparens)
 ;;
 ;;
 ;; ruby and rails modes
