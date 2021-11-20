@@ -14,5 +14,6 @@
                             (less-css-mode . "\\.less$")
                             (markdown-mode . "\\.\\(md\\|markdown\\)$")
                             (hatena-diary-mode . "\\.htn$")
-                            (web-mode . "\\.\\(htm\\|html\\)$"))
+                            ;(web-mode . "\\.\\(htm\\|html\\)$")
+                            )
       do (add-to-list 'auto-mode-alist (cons ext mode)))

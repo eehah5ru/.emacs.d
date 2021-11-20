@@ -1,7 +1,10 @@
 (require-or-install 'wdired)
+(require-or-install 'dired-git)
+
 (add-hook 'dired-mode-hook
           (lambda ()
-            (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)))
+            (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+            (dired-git-mode)))
 
 (require-or-install 'direx)
 (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
@@ -11,3 +14,5 @@
 (setq dired-recursive-copies (quote always)) ; “always” means no asking
 (setq dired-recursive-deletes (quote top)) ; “top” means ask once
 (setq dired-dwim-target t) ; copy from one dired dir to the next dired dir shown in a split window
+
+

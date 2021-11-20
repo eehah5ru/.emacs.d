@@ -2,6 +2,7 @@
 (require-or-install 'helm-swoop)
 (require-or-install 'helm-config)
 (require-or-install 'helm-projectile)
+(require-or-install 'helm-ls-git)
 (require-or-install 'ac-helm)
 (require-or-install 'helm-descbinds)
 
@@ -44,6 +45,7 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-r") #'helm-recentf)
 (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
 (global-set-key (kbd "M-y")     #'helm-show-kill-ring)
 ;;;
 ;;; swoop keys

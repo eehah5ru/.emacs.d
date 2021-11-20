@@ -45,4 +45,6 @@
 (define-key org-mode-map (kbd "C-с M-ц") 'org-copy)
 (define-key org-mode-map (kbd "M-ц") 'kill-ring-save)
 (define-key org-mode-map (kbd "C-п") 'keyboard-quit)
+
 (setq org-log-done t)
+(setq org-cycle-separator-lines -1)

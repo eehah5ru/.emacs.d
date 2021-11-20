@@ -5,6 +5,7 @@
 ;; (require-or-install 'ruby-tools)
 ;; (require-or-install 'yard-mode)
 (require-or-install 'enh-ruby-mode)
+(require-or-install 'smartparens)
 ;;
 ;;
 ;; ruby and rails modes
@@ -67,11 +68,15 @@
 ;; Support for running rspec tests
 ;; (require 'rspec-mode)
 
+(let ((hooks (lambda ()
+               (highlight-indentation-current-column-mode)
+               (smartparens-mode))))
+  (add-hook 'ruby-mode-hook
+            hooks)
 
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (highlight-indentation-current-column-mode)
-            (smartparens-mode)))
+  (add-hook 'enh-ruby-mode
+            hooks))
+
 
 ;;;
 ;;; disable advanced paren-mode
