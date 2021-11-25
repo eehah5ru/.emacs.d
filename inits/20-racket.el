@@ -1,14 +1,17 @@
 (use-package racket-mode
              :ensure t)
 
-(use-package geiser
+(use-package geiser-racket
             :ensure t)
 
 (use-package scheme-complete
              :ensure t)
 
 (use-package dash-at-point
-             :ensure t)
+  :ensure t)
+
+(use-package paredit
+  :ensure t)
 
 ;(require-or-install 'racket-mode)
 ;(require-or-install 'geiser)
@@ -25,5 +28,5 @@
 
 (add-hook 'racket-mode-hook
           (lambda ()
-            (print "hi from racket init")
+            (enable-paredit-mode)
             (setq dash-at-point-docset "racket")))
