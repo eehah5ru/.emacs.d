@@ -22,6 +22,7 @@
 ;;
 
 (let ((my-pathes (list
+                  (expand-file-name "~/.ghcup/bin")
                   (expand-file-name "~/.local/bin")
                   (expand-file-name "/usr/local/bin")
                   (expand-file-name "~/.nix-profile/bin"))))
@@ -43,10 +44,37 @@
   )
 )
 
+;;
+;;
+;; 2021 november config
+;; based on http://abailly.github.io/posts/a-modern-haskell-env.html
+;; haskell lang server installation via ghcup https://www.haskell.org/ghcup/
+
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
+;; (use-package yasnippet
+;;   :ensure t)
+(use-package lsp-mode
+  :ensure t
+  :hook (haskell-mode . lsp)
+  :commands lsp)
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+(use-package lsp-haskell
+  :ensure t
+  :config
+ (setq lsp-haskell-server-path "haskell-language-server-wrapper")
+ (setq lsp-haskell-server-args ())
+   ;; Comment/uncomment this line to see interactions between lsp client/server.
+  (setq lsp-log-io t))
+
 
 ;;;
 ;;;
-;;; new config
+;;; new config 2019
 ;;;
 ;;;
 
@@ -66,53 +94,53 @@
 
 
 ;; LSP
-(use-package nix-sandbox
-  :ensure t
-  )
+;; (use-package nix-sandbox
+;;   :ensure t
+;;   )
 
-(use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode t))
-(use-package yasnippet
-  :ensure t)
+;; (use-package flycheck
+;;   :ensure t
+;;   :init
+;;   (global-flycheck-mode t))
+;; (use-package yasnippet
+;;   :ensure t)
 
-(use-package lsp-mode
-  :ensure t
-  :hook (haskell-mode . lsp)
-  :commands lsp)
+;; (use-package lsp-mode
+;;   :ensure t
+;;   :hook (haskell-mode . lsp)
+;;   :commands lsp)
 
-;; (use-package nix-haskell-mode
+;; ;; (use-package nix-haskell-mode
+;; ;;   :ensure t
+;; ;;   :init
+;; ;;   (setenv "NIX_PATH" (expand-file-name "~/.nix-defexpr/channels"))
+;; ;;   :hook (haskell-mode . nix-haskell-mode))
+
+;; (use-package lsp-ui
+;;   :ensure t
+;;   :commands lsp-ui-mode)
+
+;; (use-package lsp-haskell
 ;;   :ensure t
 ;;   :init
 ;;   (setenv "NIX_PATH" (expand-file-name "~/.nix-defexpr/channels"))
-;;   :hook (haskell-mode . nix-haskell-mode))
+;;   :config
+;;   ;;
+;;   ;; nix
+;;   ;;
+;;   ;; (setq lsp-haskell-process-path-hie (nix-executable-find (nix-current-sandbox) "ghcide"))
+;;   ;; (setq lsp-haskell-process-args-hie '())
+;;   ;;
+;;   ;; without nix
+;;   ;;
+;;   (setq lsp-haskell-process-args-hie '("exec" "ghcide" "--" "--lsp")
+;;         lsp-haskell-process-path-hie "stack"
+;;         lsp-haskell-process-wrapper-function (lambda (argv) (cons (car argv) (cddr argv)))
+;;   )
 
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode)
-
-(use-package lsp-haskell
-  :ensure t
-  :init
-  (setenv "NIX_PATH" (expand-file-name "~/.nix-defexpr/channels"))
-  :config
-  ;;
-  ;; nix
-  ;;
-  ;; (setq lsp-haskell-process-path-hie (nix-executable-find (nix-current-sandbox) "ghcide"))
-  ;; (setq lsp-haskell-process-args-hie '())
-  ;;
-  ;; without nix
-  ;;
-  (setq lsp-haskell-process-args-hie '("exec" "ghcide" "--" "--lsp")
-        lsp-haskell-process-path-hie "stack"
-        lsp-haskell-process-wrapper-function (lambda (argv) (cons (car argv) (cddr argv)))
-  )
-
-  ;; Comment/uncomment this line to see interactions between lsp client/server.
-  (setq lsp-log-io t)
-  )
+;;   ;; Comment/uncomment this line to see interactions between lsp client/server.
+;;   (setq lsp-log-io t)
+;;   )
 
 (use-package haskell-mode
   :ensure t
