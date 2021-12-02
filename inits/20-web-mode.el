@@ -8,6 +8,10 @@
 ;;;
 ;;; setting //-like comments for javascript code
 ;;;
+
+(use-package web-mode
+  :ensure t)
+
 (setq-default web-mode-comment-formats
               '(("java"       . "/*")
                 ("javascript" . "//")
