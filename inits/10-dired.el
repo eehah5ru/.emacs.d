@@ -1,5 +1,14 @@
-(require-or-install 'wdired)
-(require-or-install 'dired-git)
+(use-package wdired
+  :ensure t)
+
+(use-package dired-git
+  :ensure t)
+
+(use-package dired-single
+  :ensure t)
+
+(use-package direx
+  :ensure t)
 
 (add-hook 'dired-mode-hook
           (lambda ()
