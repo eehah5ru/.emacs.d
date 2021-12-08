@@ -1,4 +1,7 @@
-(require-or-install 'paredit)
+(use-package paredit
+  :ensure t)
+
+;; (require-or-install 'paredit)
 
 
 ;; (define-key )
