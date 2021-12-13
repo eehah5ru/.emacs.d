@@ -1,7 +1,10 @@
 (defvar --backup-directory (concat user-emacs-directory "backups"))
+
 (if (not (file-exists-p --backup-directory))
         (make-directory --backup-directory t))
+
 (setq backup-directory-alist `(("." . ,--backup-directory)))
+
 (setq make-backup-files t               ; backup of a file the first time it is saved.
       backup-by-copying t               ; don't clobber symlinks
       version-control t                 ; version numbers for backup files
@@ -16,6 +19,8 @@
 
 (setq auto-save-file-name-transform
       `((".*" ,temporary-file-directory t)))
+
+(setq create-lockfiles nil)
 
 ;; (setq backup-directory-alist
 ;;       `((".*" . ,"~/.emacs.d/tmp")))
