@@ -63,6 +63,7 @@
 (use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode)
+
 (use-package lsp-haskell
   :ensure t
   :config
@@ -145,7 +146,8 @@
 (use-package haskell-mode
   :ensure t
   :custom
-  (haskell-process-type 'cabal-new-repl)
+  ;; (haskell-process-type 'cabal-new-repl)
+  (haskell-process-type 'auto)
   (haskell-process-suggest-remove-import-lines t)
   (haskell-process-auto-import-loaded-modules t)
   (haskell-process-log t)
@@ -156,6 +158,8 @@
   (haskell-indentation-left-offset 2)
   (haskell-indentation-where-pre-offset 2)
   (haskell-indentation-where-post-offset 2)
+
+  (haskell-stylish-on-save t)
 
   :config
   (defun haskell-mode-setup ()
