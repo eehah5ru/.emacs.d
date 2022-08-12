@@ -7,6 +7,9 @@
 (use-package scheme-complete
              :ensure t)
 
+(use-package rainbow-delimiters
+  :ensure t)
+
 (use-package dash-at-point
   :ensure t)
 
