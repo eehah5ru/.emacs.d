@@ -96,49 +96,5 @@
 
 (straight-use-package 'use-package)
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(coffee-tab-width 2)
- '(company-ghc-show-info t)
- '(custom-safe-themes
-   '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" "3b8284e207ff93dfc5e5ada8b7b00a3305351a3fb222782d8033a400a48eca48" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" "00445e6f15d31e9afaa23ed0d765850e9cd5e929be5e8e63b114a3346236c44c" "57a29645c35ae5ce1660d5987d3da5869b048477a7801ce7ab57bfb25ce12d3e" "4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" "f5b6be56c9de9fd8bdd42e0c05fecb002dedb8f48a5f00e769370e4517dde0e8" default))
- '(dash-at-point-legacy-mode t)
- '(flycheck-coffeelintrc "~/.emacs.d/coffeelint.json")
- '(haskell-interactive-mode-eval-pretty nil)
- '(haskell-interactive-mode-hide-multi-line-errors nil)
- '(haskell-interactive-mode-include-file-name nil)
- '(haskell-interactive-popup-errors nil)
- '(haskell-notify-p t)
- '(haskell-process-args-ghci 'nil)
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-do-cabal-format-string ":!cd %s && unset GHC_PACKAGE_PATH && %s")
- '(haskell-process-log t)
- '(haskell-process-reload-with-fbytecode nil)
- '(haskell-process-show-debug-tips nil)
- '(haskell-process-suggest-haskell-docs-imports t)
- '(haskell-process-suggest-hoogle-imports nil)
- '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-type 'stack-ghci)
- '(haskell-process-use-presentation-mode t)
- '(haskell-stylish-on-save nil)
- '(haskell-tags-on-save t)
- '(helm-follow-mode-persistent t)
- '(hindent-style "chris-done")
- '(org-agenda-files
-   '("~/works/childrens-futures/childrensfutures-trade/docs/todo.org"))
- '(package-selected-packages
-   '(po-mode sphinx-doc processing-2-mode helm-lsp elpy rainbow-mode nix-sandbox nix-haskell-mode nix-mode lsp-haskell lsp-ui lsp-mode smartparens dired-git helm-ls-git dante ag company-pollen pollen-mode dash-at-point graphviz-dot-mode hyperbole arduino-mode mutt-mode applescript-mode psgml mmm-mode ruby-end nvm whitespace-cleanup-mode markdown-mode-plus markdown-preview-mode markdown-mode+ muttrc-mode ssass-mode gnuplot gnuplot-mode hl-line+ hl-mode+ haskell-snippets outline-magic latex-extra company-auctex auctex nginx-mode helm-clojuredocs helm-tramp less-css-mode company-shell helm-mt multi-term flymake-solidity clojure-mode-extra-font-locking ac-cider clojure-mode cider helm-cider helm-cider-history helm helm-ag helm-company helm-ghc yard-mode slim-mode shm scss-mode scheme-complete sass-mode ruby-tools ruby-electric ruby-additional robe recentf-ext racket-mode popwin paredit org-bullets markdown-toc magit-annex js2-mode js-doc jade-mode init-loader hindent highlight-indentation helm-swoop helm-projectile helm-descbinds gist geiser flymake-coffee flycheck-elm evil enh-ruby-mode elm-mode direx csv-mode company-ghci company-ghc color-theme-solarized coffee-mode autopair auto-save-buffers-enhanced anzu ac-slime ac-helm))
- '(shm-auto-insert-bangs t)
- '(shm-auto-insert-skeletons t)
- '(shm-use-hdevtools t)
- '(shm-use-presentation-mode t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(setq custom-file (expand-file-name "custom-vars.el" *emacs-config-directory*))
+(load custom-file)

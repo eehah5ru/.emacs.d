@@ -1,4 +1,7 @@
-(require-or-install 'js2-mode)
+(use-package js2-mode
+	     :ensure t)
+
+;(require-or-install 'js2-mode)
 
 ;; (unless (package-installed-p 'js2-mode)
 ;;   (package-install 'js2-mode))

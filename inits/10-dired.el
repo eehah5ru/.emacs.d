@@ -1,13 +1,23 @@
-;; (require-or-install 'wdired)
-;; (require-or-install 'dired-git)
+(use-package wdired
+  :ensure t)
 
-;; (add-hook 'dired-mode-hook
-;;           (lambda ()
-;;             (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
-;;             (dired-git-mode)))
+;; (use-package dired-git
+;;   :ensure t)
 
-;; (require-or-install 'direx)
-;; (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
+(use-package dired-single
+  :ensure t)
+
+(use-package direx
+  :ensure t)
+
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+            ;; (dired-git-mode)
+            ))
+
+
+(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
 
 ;; (evil-declare-key 'normal direx:direx-mode-map (kbd "RET") 'direx:maybe-find-item)
 

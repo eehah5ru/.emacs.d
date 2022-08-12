@@ -77,3 +77,5 @@
 ;; (define-key windmove-map "s" 'split-window-conditional)
 
 (define-key minibuffer-local-completion-map (kbd "C-w") 'backward-kill-word)
+
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
