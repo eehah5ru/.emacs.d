@@ -10,8 +10,9 @@
 (use-package helm-projectile
              :ensure t)
 
-(use-package helm-ls-git
-             :ensure t)
+;; temporary disabled
+;; (use-package helm-ls-git
+;;              :ensure t)
 
 (use-package ac-helm
              :ensure t)

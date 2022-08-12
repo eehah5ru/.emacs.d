@@ -1,13 +1,13 @@
-(require-or-install 'wdired)
-(require-or-install 'dired-git)
+;; (require-or-install 'wdired)
+;; (require-or-install 'dired-git)
 
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
-            (dired-git-mode)))
+;; (add-hook 'dired-mode-hook
+;;           (lambda ()
+;;             (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+;;             (dired-git-mode)))
 
-(require-or-install 'direx)
-(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
+;; (require-or-install 'direx)
+;; (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
 
 ;; (evil-declare-key 'normal direx:direx-mode-map (kbd "RET") 'direx:maybe-find-item)
 

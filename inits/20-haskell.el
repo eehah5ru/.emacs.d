@@ -63,10 +63,12 @@
 (use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode)
+
 (use-package lsp-haskell
   :ensure t
   :config
- (setq lsp-haskell-server-path "haskell-language-server-wrapper")
+  (setq lsp-haskell-server-path "haskell-language-server-wrapper")
+  (setq lsp-auto-guess-root nil)
  (setq lsp-haskell-server-args ())
    ;; Comment/uncomment this line to see interactions between lsp client/server.
   (setq lsp-log-io t))
