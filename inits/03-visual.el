@@ -24,6 +24,11 @@
 (column-number-mode t)
 (setq-default line-spacing 0.1)
 
+;;;
+;;; font-size
+;;;
+(set-face-attribute 'default nil :height 160)
+
 
 ;;
 ;;
