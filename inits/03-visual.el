@@ -26,8 +26,9 @@
 
 ;;;
 ;;; font-size
+;;; TODO: only for 4k!
 ;;;
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 120)
 
 
 ;;
