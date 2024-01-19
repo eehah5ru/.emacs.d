@@ -53,28 +53,28 @@
 
 
 ;; el-get
-(defvar *el-get-directory*
-  (expand-file-name "el-get/el-get" *emacs-config-directory*))
+;; (defvar *el-get-directory*
+;;   (expand-file-name "el-get/el-get" *emacs-config-directory*))
 
-(add-to-list 'load-path *el-get-directory*)
+;; (add-to-list 'load-path *el-get-directory*)
 
-(unless (require 'el-get nil t)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
+;; (unless (require 'el-get nil t)
+;;   (with-current-buffer
+;;       (url-retrieve-synchronously
+;;        "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+;;     (goto-char (point-max))
+;;     (eval-print-last-sexp)))
 
-(require 'el-get)
+;; (require 'el-get)
 
-(setq el-get-recipe-path
-      (list (expand-file-name "recipes" *el-get-directory*)
-            (expand-file-name "el-get/user/recipes" *emacs-config-directory*)))
+;; (setq el-get-recipe-path
+;;       (list (expand-file-name "recipes" *el-get-directory*)
+;;             (expand-file-name "el-get/user/recipes" *emacs-config-directory*)))
 
-(setq el-get-user-package-directory
-      (expand-file-name "el-get/user/init-files" *emacs-config-directory*))
+;; (setq el-get-user-package-directory
+;;       (expand-file-name "el-get/user/init-files" *emacs-config-directory*))
 
-(el-get 'sync)
+;; (el-get 'sync)
 
 ;;
 ;;
