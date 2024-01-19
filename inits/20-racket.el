@@ -1,5 +1,14 @@
 (use-package racket-mode
-             :ensure t)
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode))
+  (add-hook 'racket-mode-hook #'racket-xp-mode)
+  
+  :config
+  (defun my-racket-mode-hook ()
+    (require 'racket-xp))
+  (add-hook 'racket-mode-hook 'my-racket-mode-hook)
+  )
 
 (use-package geiser-racket
             :ensure t)
@@ -15,6 +24,8 @@
 
 (use-package paredit
   :ensure t)
+
+
 
 ;(require-or-install 'racket-mode)
 ;(require-or-install 'geiser)
