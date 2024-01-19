@@ -11,8 +11,10 @@
   (setq mac-pass-command-to-system nil))
 
 (when (linuxp)
-  (setq x-super-keysym 'meta)
-  (setq x-meta-keysym 'super))
+  (setq x-alt-keysym 'meta)
+  ;; (setq x-super-keysym 'meta)
+  ;; (setq x-meta-keysym 'super)
+  )
 
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (global-unset-key (kbd "ESC ESC ESC"))

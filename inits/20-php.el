@@ -14,5 +14,11 @@
 ;;     :back "\\?>")))
 ;; (autoload 'php-mode "php-mode" "PHP editing mode" t)
 
+(use-package web-mode
+  :config
+  (setq web-mode-engines-alist '(("php" . "\\.html\\'"))))
+
 (add-to-list 'auto-mode-alist '("\\.php3?\\'" . web-mode) t)
 (add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode) t)
+
+

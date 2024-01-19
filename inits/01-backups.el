@@ -32,3 +32,7 @@
 ;;   kept-new-versions 6
 ;;   kept-old-versions 2
 ;;   version-control t)
+
+(global-undo-tree-mode)
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))

@@ -3,6 +3,7 @@
 (cl-loop for (mode . ext) in '((emacs-lisp-mode . "\\.el$")
                             (lisp-mode . "\\.\\(cl\\|lisp\\)$")
                             (scheme-mode . "\\.scm$")
+                            (racket-mode . "\\.rkt$")
                             (clojure-mode . "\\.clj$")
                             (clojurescript-mode . "\\.cljs$")
                             (perl-model . "\\.\\(pl\\|t\\|psgi\\)$")
