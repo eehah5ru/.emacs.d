@@ -58,7 +58,14 @@
   :ensure t
   :commands lsp-ui-mode)
 
+(use-package rubocop
+  :ensure t
+  :init
+  (add-hook 'ruby-mode-hook 'rubocop-mode)
+  :diminish rubocop-mode)
 
+(use-package ruby-electric
+  :ensure t)
 
 ;; (use-package robe
 ;;              :ensure t)

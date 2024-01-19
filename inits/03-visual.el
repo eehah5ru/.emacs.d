@@ -52,14 +52,17 @@
 ;;
 ;;
 ;; Linum plugin
-(use-package linum
-             :ensure t)
+;; (use-package linum
+;;              :ensure t)
 
-(require-or-install 'linum) ;; вызвать Linum
-(line-number-mode   t) ;; показать номер строки в mode-line
-(global-linum-mode  t) ;; показывать номера строк во всех буферах
-(column-number-mode t) ;; показать номер столбца в mode-line
-(setq linum-format " %d") ;; задаем формат нумерации строк
+;; (require-or-install 'linum) ;; вызвать Linum
+;; (line-number-mode   t) ;; показать номер строки в mode-line
+;; (global-linum-mode  t) ;; показывать номера строк во всех буферах
+;; (column-number-mode t) ;; показать номер столбца в mode-line
+;; (setq linum-format " %d") ;; задаем формат нумерации строк
+
+(global-display-line-numbers-mode)
+
 
 
 ;;
@@ -93,8 +96,16 @@
 (setq query-replace-highlight t)
 
 ;; Easy transition between buffers: M-arrow-keys
-(if (equal nil (equal major-mode 'org-mode))
-    (windmove-default-keybindings 'super))
+;; (if (equal nil (equal major-mode 'org-mode))
+;;     (windmove-default-keybindings 'super)
+;;   )
+;; (windmove-default-keybindings "C-c")
+
+(windmove-delete-default-keybindings)
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
 
 ;;; highlight current line
 (global-hl-line-mode)
