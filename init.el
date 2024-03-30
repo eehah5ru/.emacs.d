@@ -97,4 +97,6 @@
 (straight-use-package 'use-package)
 
 (setq custom-file (expand-file-name "custom-vars.el" *emacs-config-directory*))
-(load custom-file)
+
+(when (file-exists-p custom-file)
+  (load custom-file))
