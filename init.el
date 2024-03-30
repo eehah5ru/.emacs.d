@@ -39,6 +39,7 @@
        (require package))))
 
 (require-or-install 'init-loader)
+(require-or-install 'use-package)
 
 (setq init-loader-show-log-after-init t)
 
