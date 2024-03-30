@@ -6,7 +6,6 @@
 (use-package slime
   :init
   (progn
-    (require 'slime-autoloads)
     (add-hook 'slime-mode-hook
               (lambda ()
                 (unless (slime-connected-p)
@@ -18,6 +17,7 @@
     )
   :config
   (progn
+    (use-package 'slime-autoloads)    
     (load (expand-file-name "~/.roswell/helper.el"))
     (setq inferior-lisp-program "ros -Q run")
     (load "~/.roswell/lisp/quicklisp/log4slime-setup.el")
