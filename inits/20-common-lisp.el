@@ -3,8 +3,8 @@
 ;;; doc live here
 ;;; https://lispcookbook.github.io/cl-cookbook/emacs-ide.html
 ;;;
-(use-package slime-autoloads
-             :ensure t)    
+;; (use-package slime-autoloads
+;;              :ensure t)    
 
 (use-package slime
              :init
