@@ -21,6 +21,10 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
+;; temporary solution for orange pi cuz broken gpg keys
+(when (string= "decoc" (system-name))
+  (setq package-check-signature nil))
+
 (package-initialize)
 
 (defun package-install-with-refresh (package)
