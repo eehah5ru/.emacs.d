@@ -9,7 +9,12 @@
 (use-package slime
              :init
              (progn
-               (require 'slime-autoloads)
+               (condition-case err
+                   (require 'slime-autoloads)
+                 (file-missing
+                  (display-warning :warning "slime-autoloads are missing")
+                  nil)
+                 )
                (add-hook 'slime-mode-hook
                          (lambda ()
                            (unless (slime-connected-p)
@@ -21,64 +26,79 @@
                )
              :config
              (progn
-               (load (expand-file-name "~/.roswell/helper.el"))
-               (setq inferior-lisp-program "ros -Q run")
-               (load "~/.roswell/lisp/quicklisp/log4slime-setup.el")
-               (global-log4slime-mode 1)
-               ;; (setf inferior-lisp-program "sbcl")
-               (slime-setup '(slime-fancy
-                              slime-quicklisp
-                              slime-asdf
-                              helm-slime
-                              slime-indentation
-                              slime-tramp
-                              slime-banner
-                              slime-company
-                              slime-mdot-fu
-                              ;; slime-hyperspec-lookup
-                              slime-repl))
-               (setq slime-net-coding-system 'utf-8-unix)
-               (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
-               (setq slime-auto-select-connection 'always)
-               (setq slime-kill-without-query-p t)
-               (setq slime-fuzzy-explanation "")
-               (setq slime-asdf-collect-notes t)
-               (setq slime-inhibit-pipelining nil)
-               (setq slime-load-failed-fasl 'always)
-               (setq slime-repl-history-remove-duplicates t)
-               (setq slime-repl-history-trim-whitespaces t)
-               (setq slime-export-symbol-representation-auto t)
-               (setq lisp-indent-function 'common-lisp-indent-function)
-               (setq lisp-loop-indent-subclauses nil)
-               (setq lisp-loop-indent-forms-like-keywords t)
-               (setq lisp-lambda-list-keyword-parameter-alignment t)
+               (condition-case err
+                   (progn
+                     (load (expand-file-name "~/.roswell/helper.el"))
+                     (setq inferior-lisp-program "ros -Q run")
+                     (load "~/.roswell/lisp/quicklisp/log4slime-setup.el")
+                     (global-log4slime-mode 1)
+                     ;; (setf inferior-lisp-program "sbcl")
+                     (slime-setup '(slime-fancy
+                                    slime-quicklisp
+                                    slime-asdf
+                                    helm-slime
+                                    slime-indentation
+                                    slime-tramp
+                                    slime-banner
+                                    slime-company
+                                    slime-mdot-fu
+                                    ;; slime-hyperspec-lookup
+                                    slime-repl))
 
-               ;; keys
-
-               (defun slime-repl-return-at-end ()
-                 (interactive)
-                 (if (<= (point-max) (point))
-                     (slime-repl-return)
-                     (slime-repl-newline-and-indent)))
-
-               (define-key lisp-mode-map
+                     (setq slime-net-coding-system 'utf-8-unix)
+                     (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+                     (setq slime-auto-select-connection 'always)
+                     (setq slime-kill-without-query-p t)
+                     (setq slime-fuzzy-explanation "")
+                     (setq slime-asdf-collect-notes t)
+                     (setq slime-inhibit-pipelining nil)
+                     (setq slime-load-failed-fasl 'always)
+                     (setq slime-repl-history-remove-duplicates t)
+                     (setq slime-repl-history-trim-whitespaces t)
+                     (setq slime-export-symbol-representation-auto t)
+                     (setq lisp-indent-function 'common-lisp-indent-function)
+                     (setq lisp-loop-indent-subclauses nil)
+                     (setq lisp-loop-indent-forms-like-keywords t)
+                     (setq lisp-lambda-list-keyword-parameter-alignment t)
+                     ;; keys
+                     
+                     (defun slime-repl-return-at-end ()
+                       (interactive)
+                       (if (<= (point-max) (point))
+                           (slime-repl-return)
+                         (slime-repl-newline-and-indent)))
+                     
+                     (define-key lisp-mode-map
                    (kbd "C-c C-q")
-                 'slime-close-all-parens-in-sexp)
-               (define-key slime-mode-indirect-map
-                   (kbd "M-_")
-                 'paredit-convolute-sexp)
-               (define-key slime-repl-mode-map
-                   (kbd "C-c C-z")
-                 #'quit-window)
-               (define-key slime-repl-mode-map
-                   (read-kbd-macro paredit-backward-delete-key)
-                 nil)
-               (define-key slime-repl-mode-map
-                   (kbd "RET")
-                 'slime-repl-return-at-end)
-               (define-key slime-repl-mode-map
-                   (kbd "<return>")
-                 'slime-repl-return-at-end)
+                       'slime-close-all-parens-in-sexp)
+                     (define-key slime-mode-indirect-map
+                         (kbd "M-_")
+                       'paredit-convolute-sexp)
+                     (define-key slime-repl-mode-map
+                         (kbd "C-c C-z")
+                       #'quit-window)
+                     (define-key slime-repl-mode-map
+                         (read-kbd-macro paredit-backward-delete-key)
+                       nil)
+                     (define-key slime-repl-mode-map
+                         (kbd "RET")
+                       'slime-repl-return-at-end)
+                     (define-key slime-repl-mode-map
+                         (kbd "<return>")
+                       'slime-repl-return-at-end)
+                     
+                     
+                     )                 
+                 (file-missing
+                  (display-warning :warning "roswell script are missing")
+                  nil)
+                 (void-function
+                  (display-warning :warning "some slime functions have been not loaded"))
+                 (void-variable
+                  (display-warning :warning "some slime variables are missing")))
+               
+               
+
                ))
 
 (use-package slime-company
