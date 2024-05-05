@@ -1,7 +1,7 @@
 (use-package flycheck
              :ensure t)
 
-(use-pcakage flycheck-elm
+(use-package flycheck-elm
              :ensure t)
 
 (use-package company
