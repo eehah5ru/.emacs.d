@@ -22,7 +22,8 @@
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; temporary solution for orange pi cuz broken gpg keys
-(when (string= "decoc" (system-name))
+(when (or (string= "decoc" (system-name))
+          (string= "vagrant" (user-login-name)))
   (setq package-check-signature nil))
 
 (package-initialize)
