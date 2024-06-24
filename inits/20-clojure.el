@@ -7,8 +7,8 @@
 (use-package helm-cider
              :ensure t)
 
-(use-package ac-cider
-             :ensure t)
+;; (use-package ac-cider
+;;              :ensure t)
 
 (use-package clojure-mode-extra-font-locking
              :ensure t)
