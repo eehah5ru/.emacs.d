@@ -28,7 +28,7 @@
 ;;; font-size
 ;;; TODO: only for 4k!
 ;;;
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 140)
 
 
 ;;
@@ -44,7 +44,10 @@
 (setq use-dialog-box     nil) ;; никаких графических диалогов и окон - все через минибуфер
 (setq redisplay-dont-pause t)  ;; лучшая отрисовка буфера
 (setq ring-bell-function 'ignore) ;; отключить звуковой сигнал
-
+;;; hide title bar only when mmaximized
+(add-hook 'window-size-change-functions 'frame-hide-title-bar-when-maximized)
+;;; or for current frame
+;(set-frame-parameter nil 'undecorated t)
 
 ;;
 ;;

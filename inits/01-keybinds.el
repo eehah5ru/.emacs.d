@@ -16,8 +16,9 @@
   ;; (setq x-meta-keysym 'super)
   )
 
-(define-key global-map (kbd "RET") 'newline-and-indent)
+;(define-key global-map (kbd "RET") 'newline-and-indent)
 (global-unset-key (kbd "ESC ESC ESC"))
+(setq x-alt-keysym 'ctrl)
 
 (defun font-big ()
   (interactive)
