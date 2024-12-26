@@ -11,17 +11,31 @@
   (file-missing
    (display-warning :warning "roswell-helper script is missing")
    nil)
-)
+  )
+
 
 (use-package slime
   :init
   (progn
+    
     (condition-case err
-        (require 'slime-autoloads)
-      (file-missing
-       (display-warning :warning "slime-autoloads are missing")
-       nil)
-      )
+                    (require 'slime-autoloads)
+                    (file-missing
+                     (display-warning :warning "slime-autoloads are missing")
+                     nil)
+                    )
+
+    ;; adjust path to use roswell
+    (let ((my-pathes (list
+                      (expand-file-name "~/.roswell/bin")
+                      )))
+      (setenv "PATH" (concat (mapconcat 'identity my-pathes ":")
+                             ":"
+                             (getenv "PATH")))
+      (mapcar (lambda (x)
+                (add-to-list 'exec-path x))
+              my-pathes))
+    
     (add-hook 'slime-mode-hook
               (lambda ()
                 (unless (slime-connected-p)
@@ -35,7 +49,9 @@
   (progn
     (condition-case err
         (progn
-          (setq inferior-lisp-program "ros -Q run")
+          ;; commented out in favor of using multiple lisp implementations:
+          ;; (setq inferior-lisp-program "ros -Q run")
+          ;; deprecated:
           ;; (load "~/.roswell/lisp/quicklisp/log4slime-setup.el")
           ;; (global-log4slime-mode 1)
           ;; (setf inferior-lisp-program "sbcl")
@@ -50,6 +66,16 @@
                          slime-mdot-fu
                          ;; slime-hyperspec-lookup
                          slime-repl))
+
+          (setq slime-default-lisp 'sbcl)
+          (setq slime-lisp-implementations
+                `((sbcl ("ros" "-Q" "run")
+                        :coding-system utf-8-unix)
+                  ;; (roswell ("ros" "dynamic-space-size=2000" "-Q" "-l" "~/.sbclrc" "run"))
+                  ;; (ccl ("ros" "-L" "ccl-bin" "-Q" "run") :coding-system utf-8-unix)
+                  (qlot ("qlot" "exec" "sbcl")
+                        :coding-system utf-8-unix)))
+          
 
           (setq slime-net-coding-system 'utf-8-unix)
           (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
