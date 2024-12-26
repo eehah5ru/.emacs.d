@@ -4,26 +4,27 @@
 ;;; https://www.racket-mode.com/
 ;;; https://www.linw1995.com/en/blog/Write-Racket-With-Emacs/
 ;;;
-(use-package racket-mode
-  :ensure t
-  :init
-  (add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode))
-  (add-hook 'racket-mode-hook #'racket-xp-mode)
-  
-  :config
-  (defun my-racket-mode-hook ()
-    (require 'racket-xp))
-  (add-hook 'racket-mode-hook 'my-racket-mode-hook)
 
-  :bind ("C-c ." . racket-describe-search)
-  :hook ((racket-mode . racket-xp-mode)
-         (racket-mode . paredit-mode))
-  :config
-  (setq dash-at-point-docset "racket")
-  )
+;; (use-package racket-mode
+;;              :ensure t
+;;              :init
+;;              (add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode))
+;;              (add-hook 'racket-mode-hook #'racket-xp-mode)
+  
+;;              :config
+;;              (defun my-racket-mode-hook ()
+;;                (require 'racket-xp))
+;;              (add-hook 'racket-mode-hook 'my-racket-mode-hook)
+
+;;              :bind ("C-c ." . racket-describe-search)
+;;              :hook ((racket-mode . racket-xp-mode)
+;;                     (racket-mode . paredit-mode))
+;;              :config
+;;              (setq dash-at-point-docset "racket")
+;;              )
 
 (use-package geiser-racket
-            :ensure t)
+             :ensure t)
 
 (use-package scheme-complete
              :ensure t)
@@ -46,15 +47,19 @@
   (setq company-idle-delay 0.1)
   (setq company-tooltip-align-annotations t)
   :hook
-  ((racket-mode . company-mode)
-   (racket-repl-mode . company-mode)))
+  (
+   ;; (racket-mode . company-mode)
+   ;; (racket-repl-mode . company-mode)
+   (geiser-mode . company-mode)
+   ))
 
 
 (use-package rainbow-delimiters
   :ensure t
   :hook
   ((racket-mode . rainbow-delimiters-mode)
-   (racket-repl-mode . rainbow-delimiters-mode)))
+   (racket-repl-mode . rainbow-delimiters-mode)
+   (geiser-mode . rainbow-delimiters-mode)))
 
 
 ;;;
@@ -66,8 +71,8 @@
 
 (custom-set-variables '(dash-at-point-legacy-mode t))
 
-(add-hook 'racket-mode-hook
-          (lambda ()
-            (enable-paredit-mode)
-            (racket-xp-mode)
-            ))
+;; (add-hook 'racket-mode-hook
+;;           (lambda ()
+;;             (enable-paredit-mode)
+;;             (racket-xp-mode)
+;;             ))
