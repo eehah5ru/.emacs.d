@@ -113,6 +113,10 @@
 ;;; highlight current line
 (global-hl-line-mode)
 
+;;;
+;;; suppress warnings
+;;;
+(setq warning-minimum-level :error)
 
 
 ;;
