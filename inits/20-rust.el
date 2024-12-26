@@ -3,7 +3,7 @@
   (setenv "PATH" (concat (mapconcat 'identity my-pathes ":")
                          ":"
                          (getenv "PATH")))
-  (mapcar (lambda (x) (add-to-list 'exec-path x)) my-pathes))
+  (mapc (lambda (x) (add-to-list 'exec-path x)) my-pathes))
 
-(use-package rustic
-  :ensure t)
+;; (use-package rustic
+;;   :ensure t)
