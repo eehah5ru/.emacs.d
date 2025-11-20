@@ -18,33 +18,62 @@
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; temporary solution for orange pi cuz broken gpg keys
 (when (or (string= "decoc" (system-name))
           (string= "vagrant" (user-login-name)))
   (setq package-check-signature nil))
 
-(package-initialize)
+;; (package-initialize)
 
-(defun package-install-with-refresh (package)
-  (unless (assq package package-alist)
-    (progn
-      (package-refresh-contents)))
-  (unless (package-installed-p package)
-    (progn
-      (message (format "Installing %s" package))
-      (package-install package))))
+;; (defun package-install-with-refresh (package)
+;;   (unless (assq package package-alist)
+;;     (progn
+;;       (package-refresh-contents)))
+;;   (unless (package-installed-p package)
+;;     (progn
+;;       (message (format "Installing %s" package))
+;;       (package-install package))))
 
-(defun require-or-install (package)
-  (or (require package nil t)
-      (progn
-       (package-install-with-refresh package)
-       (require package))))
+;; (defun require-or-install (package)
+;;   (or (require package nil t)
+;;       (progn
+;;        (package-install-with-refresh package)
+;;        (require package))))
 
-(require-or-install 'init-loader)
-(require-or-install 'use-package)
+;; (require-or-install 'init-loader)
+;; (require-or-install 'use-package)
+
+;;;
+;;; 2025.11 - package management using straight
+;;;
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; integrate straight.el with use-package
+(setq straight-use-package-by-default t)
+(require 'use-package)
+
+;;;
+;;; end of straight config
+;;;
+
 
 (setq init-loader-show-log-after-init t)
 
