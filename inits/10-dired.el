@@ -4,8 +4,8 @@
 ;; (use-package dired-git
 ;;   :ensure t)
 
-(use-package dired-single
-  :ensure t)
+;; (use-package dired-single
+;;   :ensure t)
 
 (use-package direx
   :ensure t)
