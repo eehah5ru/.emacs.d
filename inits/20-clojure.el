@@ -13,8 +13,8 @@
 (use-package clojure-mode-extra-font-locking
              :ensure t)
 
-(use-package helm-clojuredocs
-             :ensure t)
+;; (use-package helm-clojuredocs
+;;              :ensure t)
 
 (use-package nvm
              :ensure t)
