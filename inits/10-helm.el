@@ -2,7 +2,8 @@
              :ensure t)
 
 (use-package helm-swoop
-             :ensure t)
+             :ensure t
+             :straight (:host github :repo "emacsattic/helm-swoop"))
 
 ;(use-package helm-config
 ;             :ensure t)
