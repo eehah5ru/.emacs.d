@@ -36,15 +36,12 @@
                 (add-to-list 'exec-path x))
               my-pathes))
     
-    (add-hook 'slime-mode-hook
-              (lambda ()
-                (unless (slime-connected-p)
-                  (save-excursion (slime)))))
     ;; (add-hook 'slime-mode-hook
     ;;           (lambda ()
-    ;;             )
-    ;;  )
+    ;;             (unless (slime-connected-p)
+    ;;               (save-excursion (slime)))))    
     )
+             
   :config
   (progn
     (condition-case err
@@ -69,11 +66,11 @@
 
           (setq slime-default-lisp 'sbcl)
           (setq slime-lisp-implementations
-                `((sbcl ("ros" "-Q" "run")
+                `((sbcl ("ros" "dynamic-space-size=4096" "-Q" "run")
                         :coding-system utf-8-unix)
                   ;; (roswell ("ros" "dynamic-space-size=2000" "-Q" "-l" "~/.sbclrc" "run"))
                   ;; (ccl ("ros" "-L" "ccl-bin" "-Q" "run") :coding-system utf-8-unix)
-                  (qlot ("qlot" "exec" "sbcl")
+                  (qlot ("qlot" "exec" "ros" "dynamic-space-size=4096" "-Q" "run")
                         :coding-system utf-8-unix)))
           
 
@@ -140,11 +137,20 @@
              (progn
                (add-hook 'slime-mode-hook 'slime-repl-ansi-color-mode)))
 
-(use-package slime-company
-             :ensure t)
+;; (use-package slime-company
+;;              :ensure t)
 
-(use-package company-quickhelp
-  :ensure t)
+(use-package slime-company
+             :after (slime company)
+             :config (setq slime-company-completion 'fuzzy
+                           slime-company-after-completion 'slime-company-just-one-space))
+
+
+;; (use-package auto-complete
+;;              :ensure t)
+
+;; (use-package company-quickhelp
+;;   :ensure t)
 
 (use-package slime-autoloads)
 

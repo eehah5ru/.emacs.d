@@ -31,8 +31,8 @@
 (use-package magit
              :ensure t)
 
-(use-package magit-annex
-             :ensure t)
+;; (use-package magit-annex
+;;              :ensure t)
 
 ;(require-or-install 'magit)
 ;(require-or-install 'magit-annex)

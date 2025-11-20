@@ -44,7 +44,8 @@
       helm-yank-symbol-first                 t
       helm-move-to-line-cycle-in-source      t
       helm-buffers-fuzzy-matching            t
-      helm-ff-auto-update-initial-value      t)
+      ;; helm-ff-auto-update-initial-value      t
+      )
 
 (autoload 'helm-descbinds      "helm-descbinds" t)
 (autoload 'helm-eshell-history "helm-eshell"    t)
@@ -57,7 +58,7 @@
               (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
 
 (helm-mode t)
-(helm-adaptive-mode t)
+;; (helm-adaptive-mode t)
 
 (global-set-key (kbd "C-h a")    #'helm-apropos)
 (global-set-key (kbd "C-h i")    #'helm-info-emacs)

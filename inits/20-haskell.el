@@ -22,10 +22,12 @@
 ;;
 
 (let ((my-pathes (list
-                  (expand-file-name "~/.ghcup/bin")
-                  (expand-file-name "~/.local/bin")
                   (expand-file-name "/usr/local/bin")
-                  (expand-file-name "~/.nix-profile/bin"))))
+                  (expand-file-name "~/.nix-profile/bin")
+                  (expand-file-name "~/.local/bin")
+                  (expand-file-name "~/.ghcup/bin")
+                  
+                  )))
   (setenv "PATH" (concat (mapconcat 'identity my-pathes ":")
                          ":"
                          (getenv "PATH")))
@@ -44,34 +46,75 @@
   )
 )
 
+;;;
+;;; 2025 january config
+;;;
+
+(use-package lsp-haskell
+  :ensure t
+  :config
+             (setq lsp-haskell-server-path "haskell-language-server-wrapper")
+             (setq lsp-auto-guess-root nil)
+             (setq lsp-haskell-server-args ())
+             ;; Comment/uncomment this line to see interactions between lsp client/server.
+             (setq lsp-log-io t)
+             (add-hook 'haskell-mode-hook #'lsp)
+             ;; configure lsp
+             (add-hook 'lsp-after-initialize-hook
+                       '(lambda ()
+                         (lsp--set-configuration
+                          '(:haskell (:plugin (:tactics (:config (:timeout_duration 5)))))
+                          )))             
+             )
+
+;; (use-package eglot
+;;   :ensure t
+;;   :config
+;;   (add-hook 'haskell-mode-hook 'eglot-ensure)
+;;   :config
+;;   (setq-default eglot-workspace-configuration
+;;                 '((haskell
+;;                    (plugin
+;;                     (stan
+;;                      (globalOn . :json-false)
+;;                      (ghcide-code-actions-fill-holes . (:enabled t)))))))  ;; disable stan
+;;   :custom
+;;   (eglot-autoshutdown t)  ;; shutdown language server after closing last file
+;;   (eglot-confirm-server-initiated-edits nil)  ;; allow edits without confirmation
+;;   )
+
+(use-package haskell-mode
+             :bind (:map haskell-mode-map
+                         (("C-c C-c" . haskell-compile))))
+
 ;;
 ;;
 ;; 2021 november config
 ;; based on http://abailly.github.io/posts/a-modern-haskell-env.html
 ;; haskell lang server installation via ghcup https://www.haskell.org/ghcup/
 
-(use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode t))
+;; (use-package flycheck
+;;   :ensure t
+;;   :init
+;;   (global-flycheck-mode t))
 ;; (use-package yasnippet
 ;;   :ensure t)
-(use-package lsp-mode
-  :ensure t
-  :hook (haskell-mode . lsp)
-  :commands lsp)
-(use-package lsp-ui
-  :ensure t
-  :commands lsp-ui-mode)
+;; (use-package lsp-mode
+;;   :ensure t
+;;   :hook (haskell-mode . lsp)
+;;   :commands lsp)
+;; (use-package lsp-ui
+;;   :ensure t
+;;   :commands lsp-ui-mode)
 
-(use-package lsp-haskell
-  :ensure t
-  :config
-  (setq lsp-haskell-server-path "haskell-language-server-wrapper")
-  (setq lsp-auto-guess-root nil)
- (setq lsp-haskell-server-args ())
-   ;; Comment/uncomment this line to see interactions between lsp client/server.
-  (setq lsp-log-io t))
+;; (use-package lsp-haskell
+;;   :ensure t
+;;   :config
+;;   (setq lsp-haskell-server-path "haskell-language-server-wrapper")
+;;   (setq lsp-auto-guess-root nil)
+;;  (setq lsp-haskell-server-args ())
+;;    ;; Comment/uncomment this line to see interactions between lsp client/server.
+;;   (setq lsp-log-io t))
 
 
 ;;;
@@ -144,75 +187,75 @@
 ;;   (setq lsp-log-io t)
 ;;   )
 
-(use-package haskell-mode
-  :ensure t
-  :custom
-  ;; (haskell-process-type 'cabal-new-repl)
-  (haskell-process-type 'auto)
-  (haskell-process-suggest-remove-import-lines t)
-  (haskell-process-auto-import-loaded-modules t)
-  (haskell-process-log t)
-  (haskell-tags-on-save t)
+;; (use-package haskell-mode
+;;              :ensure t
+;;              :custom
+;;              ;; (haskell-process-type 'cabal-new-repl)
+;;              (haskell-process-type 'auto)
+;;              (haskell-process-suggest-remove-import-lines t)
+;;              (haskell-process-auto-import-loaded-modules t)
+;;              (haskell-process-log t)
+;;              (haskell-tags-on-save t)
 
-  (haskell-indentation-layout-offset 2)
-  (haskell-indentation-starter-offset 2)
-  (haskell-indentation-left-offset 2)
-  (haskell-indentation-where-pre-offset 2)
-  (haskell-indentation-where-post-offset 2)
+;;              (haskell-indentation-layout-offset 2)
+;;              (haskell-indentation-starter-offset 2)
+;;              (haskell-indentation-left-offset 2)
+;;              (haskell-indentation-where-pre-offset 2)
+;;              (haskell-indentation-where-post-offset 2)
 
-  (haskell-stylish-on-save t)
+;;              (haskell-stylish-on-save t)
 
-  :config
-  (defun haskell-mode-setup ()
-    (interactive-haskell-mode)
-    (setq tab-width 2)
-    ;; (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
-    ;; (define-key evil-normal-state-map (kbd "C-]") 'haskell-mode-goto-loc)
-    ;; (define-key evil-normal-state-map (kbd "C-c C-]") 'haskell-mode-tag-find)
-    ;; (define-key evil-normal-state-map (kbd "C-c C-t") 'haskell-mode-show-type-at)
-    )
-  :hook
-  (haskell-mode . haskell-mode-setup)
+;;              :config
+;;              (defun haskell-mode-setup ()
+;;                (interactive-haskell-mode)
+;;                (setq tab-width 2)
+;;                ;; (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+;;                ;; (define-key evil-normal-state-map (kbd "C-]") 'haskell-mode-goto-loc)
+;;                ;; (define-key evil-normal-state-map (kbd "C-c C-]") 'haskell-mode-tag-find)
+;;                ;; (define-key evil-normal-state-map (kbd "C-c C-t") 'haskell-mode-show-type-at)
+;;                )
+;;              :hook
+;;              (haskell-mode . haskell-mode-setup)
 
-  ;;
-  ;; nix
-  ;;
-  ;; :config  
-  ;; (setq default-nix-wrapper
-  ;;       (lambda (args)
-  ;;         (append (list "nix-shell" "-I" (nix-current-sandbox))
-  ;;                 (list "--command" (concat "\""
-  ;;                                           (mapconcat 'identity args " ")
-  ;;                                           "\""))
-  ;;                 )
+;;              ;;
+;;              ;; nix
+;;              ;;
+;;              ;; :config  
+;;              ;; (setq default-nix-wrapper
+;;              ;;       (lambda (args)
+;;              ;;         (append (list "nix-shell" "-I" (nix-current-sandbox))
+;;              ;;                 (list "--command" (concat "\""
+;;              ;;                                           (mapconcat 'identity args " ")
+;;              ;;                                           "\""))
+;;              ;;                 )
 
-  ;;         )
-  ;;       )
-  ;; (setq haskell-nix-wrapper
-  ;;       (lambda (args)
-  ;;         (apply default-nix-wrapper (list (append args (list "--ghc-option" "-Wwarn"))))
-  ;;         )
-  ;;       )
-  ;;
-  ;; end of nix
-  ;;
+;;              ;;         )
+;;              ;;       )
+;;              ;; (setq haskell-nix-wrapper
+;;              ;;       (lambda (args)
+;;              ;;         (apply default-nix-wrapper (list (append args (list "--ghc-option" "-Wwarn"))))
+;;              ;;         )
+;;              ;;       )
+;;              ;;
+;;              ;; end of nix
+;;              ;;
 
-  ;; Flycheck is for error checking
-  ;; (setq flycheck-command-wrapper-function default-nix-wrapper
-  ;;       flycheck-executable-find
-  ;;       (lambda (cmd) (nix-executable-find (nix-current-sandbox) cmd)))
-  ;; Haskell repl session that runs in the background
-  ;;
-  ;; nix
-  ;;
-  ;; (setq haskell-process-wrapper-function haskell-nix-wrapper)
-  ;; ;; Haskell-ide-engine process
-  ;; (setq lsp-haskell-process-wrapper-function default-nix-wrapper)
-  ;;
-  ;; end of nix
-  ;;
+;;              ;; Flycheck is for error checking
+;;              ;; (setq flycheck-command-wrapper-function default-nix-wrapper
+;;              ;;       flycheck-executable-find
+;;              ;;       (lambda (cmd) (nix-executable-find (nix-current-sandbox) cmd)))
+;;              ;; Haskell repl session that runs in the background
+;;              ;;
+;;              ;; nix
+;;              ;;
+;;              ;; (setq haskell-process-wrapper-function haskell-nix-wrapper)
+;;              ;; ;; Haskell-ide-engine process
+;;              ;; (setq lsp-haskell-process-wrapper-function default-nix-wrapper)
+;;              ;;
+;;              ;; end of nix
+;;              ;;
 
-  )
+;;              )
 
 ;;;
 ;;;
