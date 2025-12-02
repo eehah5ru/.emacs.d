@@ -70,6 +70,8 @@
 (setq straight-use-package-by-default t)
 (require 'use-package)
 
+(use-package init-loader
+             :ensure t)
 ;;;
 ;;; end of straight config
 ;;;
