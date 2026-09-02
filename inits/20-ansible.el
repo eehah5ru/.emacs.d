@@ -1,6 +1,9 @@
+(use-package ansible
+  :ensure t
+  :straight t)
 
 (use-package ansible-vault
-             :ensure t)
+  :ensure t)
 ;; (use-package ansible-vault
 ;;   :ensure t
 ;;   :init
