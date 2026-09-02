@@ -1,4 +1,0 @@
-(:name slime-repl-ansi-color
-       :type github
-       :description "ANSI color for SLIME REPL buffer"
-       :pkgname "enriquefernandez/slime-repl-ansi-color")
