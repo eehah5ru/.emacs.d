@@ -18,12 +18,12 @@
 
 ;; Claude Code Agent Setup
 (use-package claude-code-ide
-             :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
-             :bind ("C-c c" . claude-code-ide-menu)
-             :config
-             (setq claude-code-ide-terminal-backend 'vterm)
-             (setq claude-code-ide-enable-mcp-server t)
-             (claude-code-ide-emacs-tools-setup))
+  :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
+  :bind ("C-c c" . claude-code-ide-menu)
+  :config
+  (setq claude-code-ide-terminal-backend 'ghostel)
+  (setq claude-code-ide-enable-mcp-server t)
+  (claude-code-ide-emacs-tools-setup))
 
 (use-package claude-code-ide
   :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
